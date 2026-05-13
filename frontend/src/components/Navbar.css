@@ -1,0 +1,236 @@
+/* ─── Navbar shell ───────────────────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 clamp(20px, 5vw, 80px);
+  background: transparent;
+  transition: background 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar--scrolled {
+  background: rgba(10, 6, 8, 0.92);
+  border-bottom-color: var(--cc-gray);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Logo ───────────────────────────────────────────────────────────────── */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--cc-white);
+  flex-shrink: 0;
+}
+
+.navbar__logo-icon {
+  color: var(--cc-yellow);
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0;
+}
+
+.navbar__logo-cc {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cc-teal);
+}
+
+.navbar__logo-capital {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--cc-white);
+}
+
+/* ─── Desktop links ──────────────────────────────────────────────────────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: 32px;
+}
+
+.navbar__link {
+  position: relative;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(240, 236, 232, 0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 20px;
+  transition: color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__link:hover {
+  color: var(--cc-white);
+}
+
+.navbar__link--active {
+  color: var(--cc-yellow);
+}
+
+.navbar__link-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cc-yellow);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar__link--active .navbar__link-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── CTA button ─────────────────────────────────────────────────────────── */
+.navbar__cta {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cc-black);
+  background: var(--cc-yellow);
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar__cta:hover {
+  background: var(--cc-pink);
+  color: var(--cc-white);
+}
+
+/* ─── Hamburger ──────────────────────────────────────────────────────────── */
+.navbar__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cc-white);
+  padding: 4px;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.navbar__hamburger:hover {
+  color: var(--cc-yellow);
+}
+
+/* ─── Mobile drawer ──────────────────────────────────────────────────────── */
+.navbar__drawer {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 6, 8, 0.97);
+  border-bottom: 1px solid var(--cc-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px clamp(20px, 5vw, 48px) 40px;
+  gap: 24px;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar__drawer--open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.navbar__drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.navbar__drawer-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 8vw, 48px);
+  letter-spacing: 3px;
+  color: rgba(240, 236, 232, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.navbar__drawer-link:hover,
+.navbar__drawer-link--active {
+  color: var(--cc-yellow);
+}
+
+.navbar__drawer-cta {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cc-black);
+  background: var(--cc-yellow);
+  border: none;
+  padding: 14px 32px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar__drawer-cta:hover {
+  background: var(--cc-pink);
+  color: var(--cc-white);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar__links,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+}

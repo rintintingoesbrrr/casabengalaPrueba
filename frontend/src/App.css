@@ -1,0 +1,35 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0608;
+  overflow-x: hidden;
+}
+
+/* Scroll-snap container */
+.app-scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Each section snaps */
+.app-scroll-container > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* EventInfo is taller than 100vh — allow it to scroll internally */
+.app-scroll-container > #evento {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  height: auto;
+}
